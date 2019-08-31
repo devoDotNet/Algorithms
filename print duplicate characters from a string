@@ -1,0 +1,27 @@
+using System;
+
+namespace Six
+{
+    class Program
+    {
+        //print duplicate characters from a string
+        static void Main(string[] args)
+        {
+            string userName = "Hannah";
+
+            //userName = userName.ToLower();
+
+            for (int i = 0; i < userName.Length; i++)
+            {
+                for (int j = i + 1; j < userName.Length; j++)
+                {
+                    if (userName[i] == userName[j])
+                        Console.WriteLine(userName[i]); 
+                }
+            }
+
+            /*it shouldn't print the h as the lowercase h and the capital H are different
+            characters. The h can be printed if you uncomment the above line of code.*/
+        }
+    }
+}
