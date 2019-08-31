@@ -1,0 +1,38 @@
+using System;
+
+namespace Three
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //find the largest and smallest number in an unsorted integer array
+
+            Random r = new Random();
+
+            int[] integers = new int[20];
+
+            for (int i = 0; i < integers.Length; i++) //fills array
+            {
+                integers[i] = r.Next(100);
+            }
+
+            for (int i = 0; i < integers.Length; i++) //sorts array
+            {
+                for (int j = i + 1; j < integers.Length; j++)
+                {
+                    if (integers[i] > integers[j])
+                    {
+                        int copy = integers[j];
+                        integers[j] = integers[i];
+                        integers[i] = copy;
+                    }
+                }
+            }
+
+            //foreach (var item in integers) //prints values in array, for checking sort
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            Console.WriteLine($"Lowest: {integers[0]}, Highest: {integers[integers.Length - 1]}");
