@@ -1,0 +1,25 @@
+using System;
+
+namespace Two
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //find the duplicate number in an array of integers
+
+            int[] integers = { 2, 12, 4, 56, 7, 87, 12, 34, 90, 12 };
+
+            for (int i = 0; i < integers.Length; i++)
+            {
+                int num = integers[i];
+
+                for (int j = i + 1; j < integers.Length; j++)
+                {
+                    if (integers[j] == num) { }
+                        Console.WriteLine($"The number {num} is repeated.");
+                }
+            }
+        }
+    }
+}
