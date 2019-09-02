@@ -1,0 +1,58 @@
+using System;
+using System.Collections.Generic;
+
+namespace PrimeNumbers
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //The Goldbach Conjecture. 
+            //The problem: is it possible to write every even number greater than 2 as the sum of two primes? The conjecture says "yes", but nobody knows.
+
+            List<int> Primes = new List<int>();
+
+            bool conjecture = false;
+
+            int evenNumber = 114;
+
+            int numberOfPrimes = 0;
+
+            for (int x = 1; x < evenNumber; x++)
+            {
+                bool isPrime = true;
+
+                for (int y = 2; y < x; y++)
+                {
+                    if (x % y == 0)
+                        isPrime = false;
+                }
+
+                if (isPrime)
+                {
+                    Primes.Add(x);
+                    Console.WriteLine(x);
+                    numberOfPrimes++;
+                }
+            }
+
+            for (int i = 0; i < Primes.Count; i++)
+            {
+                for (int j = i + 1; j < Primes.Count; j++)
+                {
+                    if (Primes[i] + Primes[j] == evenNumber)
+                    {
+                        conjecture = true;
+                        break;
+                    }
+                }
+
+                if (conjecture == true)
+                    break;
+            }
+
+            Console.WriteLine($"\n{numberOfPrimes}");
+            Console.WriteLine(conjecture);
+        }
+    }
+}
