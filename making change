@@ -1,0 +1,32 @@
+using System;
+using static System.Console;
+
+namespace CodeOffThreeNineteenNineteen
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            WriteLine("Enter the total amount owed:");
+            double.TryParse(ReadLine(), out double owedAmount);
+            owedAmount = owedAmount * 100;
+            int intOwedAmount = Convert.ToInt32(owedAmount);
+
+            WriteLine("Enter the total amount paid:");
+            double.TryParse(ReadLine(), out double paidAmount);
+            paidAmount = paidAmount * 100;
+            int intPaidAmount = Convert.ToInt32(paidAmount);
+
+            int change = (intPaidAmount - intOwedAmount);
+
+            int quarters = change / 25;
+            int dimes = (change % 25) / 10;
+            int nickels = ((change % 25) % 10) / 5;
+            int pennies = (((change % 25) % 10) % 5) / 1;
+
+            WriteLine($"Change to return: {change} cents.");
+            WriteLine($"Returns: {quarters} Quarters, {dimes} Dimes, {nickels} Nickels, and {pennies} Pennies.");
+            ReadKey();
+        }
+    }
+}
