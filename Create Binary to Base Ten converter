@@ -1,0 +1,62 @@
+using System;
+
+namespace NumberBaseTranslator
+{
+    //write a program which converts a base ten integer into a base 2 integer.
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] binaryIntegerArray;
+            int[] productArray;
+            int p = 0;
+            int result = 0;
+
+            Console.WriteLine("Enter a binary value:");
+            string userEntry = Console.ReadLine();
+            
+            while (CheckEntry(userEntry) == false)
+            {
+                Console.WriteLine("Error! Enter only a binary value (consisting of only 1's and 0's):");
+                userEntry = Console.ReadLine();
+            }
+
+            binaryIntegerArray = new int[userEntry.Length];
+            for (int i = 0; i < userEntry.Length; i++)
+            {
+                binaryIntegerArray[i] = (int)char.GetNumericValue(userEntry[i]);
+            }
+
+            productArray = new int[binaryIntegerArray.Length];
+            for (int j = productArray.Length - 1; j > -1 ; j--)
+            {
+                productArray[p] = binaryIntegerArray[j] * (int)Math.Pow(2, p);
+                p++;
+            }
+            
+            for (int k = 0; k < productArray.Length; k++)
+            {
+                result = result + productArray[k];
+            }
+
+            Console.WriteLine(result.ToString("n0"));
+        }
+        private static bool CheckEntry(string userEntry)
+        {
+            bool result = true;
+
+            for (int i = 0; i < userEntry.Length; i++)
+            {
+                int x = (int)char.GetNumericValue(userEntry[i]);
+
+                if (x != 0 && x != 1)
+                {
+                    result = false;
+                    break;
+                }
+            }
+
+            return result;
+        }
+    }
+}
